@@ -1,9 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
+import { BrowserRouter as Router,Route,Link } from "react-router-dom";
 import './App.css';
+
+import Home from './components/home.component';
 
 function App() {
   return (
+    <Router>
     <div className="App">
       <div class="wrapper">
         <div class="main-header">
@@ -365,13 +369,14 @@ function App() {
         <div class="main-panel">
           <div class="content"  >
                {/* Content gose Here */}
+               <Route path="/" exact component={Home} />
           </div>
         </div> 
         {/*<!-- End Custom template -->*/}
       </div>
 
     </div>
- 
+    </Router>
   );
 }
 
