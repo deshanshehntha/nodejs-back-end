@@ -20,7 +20,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //crate connection
-mongoose.connect('mongodb+srv://root:<root>@cluster0-pbjoq.mongodb.net/Course_Web?retryWrites=true&w=majority',{useNewUrlParser:true});
+mongoose.connect('mongodb+srv://root:root@cluster0-pbjoq.mongodb.net/Course_Web?retryWrites=true&w=majority',{useNewUrlParser:true});
 //get a instance of a connection
 const connection =mongoose.connection;
 
