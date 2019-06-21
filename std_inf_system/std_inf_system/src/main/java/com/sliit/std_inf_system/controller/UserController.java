@@ -1,11 +1,13 @@
 package com.sliit.std_inf_system.controller;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.sliit.std_inf_system.models.User;
 import com.sliit.std_inf_system.repository.UserRepository;
@@ -29,15 +31,16 @@ public class UserController {
 		User toValid = this.userRepository.findByEmail(user.getEmail());
 		if (toValid == null) {
 			System.out.println("No user found");
-			return null;
+			throw new ResponseStatusException(
+			          HttpStatus.NOT_FOUND, "User Not Found");
 		}
 		else {
 			if(user.getPassword().equals(toValid.getPassword())){
 				return toValid;
 			}
 			else {
-				System.out.println("Invalid Password");
-				return null;
+				throw new ResponseStatusException(
+				          HttpStatus.NOT_FOUND, "Invalid Password");
 			}
 		}
 	}

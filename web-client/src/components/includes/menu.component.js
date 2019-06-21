@@ -1,103 +1,38 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import './css/dashboard.css'
 import 'bootstrap/dist/css/bootstrap.min.css' 
 export default class Menu extends Component {
 
     render() {
         if(sessionStorage.getItem('isloged')){
             return(
-                <div>
-                    <nav classNameName="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-                        <a classNameName="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-                        <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/>
-                        <ul className="navbar-nav px-3">
-                            <li className="nav-item text-nowrap">
-                            <a className="nav-link" href="#">Sign out</a>
-                            </li>
-                        </ul>
-                    </nav>
+                <nav class="navbar navbar-expand-lg navbar-dark" style={{background:'#283593'}}>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                    <div className="container-fluid">
-                        <div className="row">
-                            <nav className="col-md-2 d-none d-md-block bg-light sidebar">
-                            <div className="sidebar-sticky">
-                                <ul className="nav flex-column">
-                                <li className="nav-item">
-                                    <a className="nav-link active" href="#">
-                                    <span data-feather="home"></span>
-                                    Dashboard <span className="sr-only">(current)</span>
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                    <span data-feather="file"></span>
-                                    Orders
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                    <span data-feather="shopping-cart"></span>
-                                    Products
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                    <span data-feather="users"></span>
-                                    Customers
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                    <span data-feather="bar-chart-2"></span>
-                                    Reports
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                    <span data-feather="layers"></span>
-                                    Integrations
-                                    </a>
-                                </li>
-                                </ul>
-
-                                <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                <span>Saved reports</span>
-                                <a className="d-flex align-items-center text-muted" href="#">
-                                    <span data-feather="plus-circle"></span>
-                                </a>
-                                </h6>
-                                <ul className="nav flex-column mb-2">
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Current month
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Last quarter
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Social engagement
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Year-end sale
-                                    </a>
-                                </li>
-                                </ul>
-                            </div>
-                        </nav>
+                    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                        <a class="nav-link" href="#">Centered nav only <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown08">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </li>
+                    </ul>
                     </div>
-                </div>
-            </div>
+                </nav>
             );
         }
         else{

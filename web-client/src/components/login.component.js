@@ -41,8 +41,7 @@ export default class Login extends Component {
             .then(result => {
 
                 let validUser=result.data;
-                console.log(validUser);
-                if(validUser.email==='' && validUser.email===null){
+                if(result.data===[]){
                     this.state={
                         email:'',
                         password:''
