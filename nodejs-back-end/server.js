@@ -13,7 +13,7 @@ const courseRoutes = require('./routes/course.server.routes');
 
 /*if the environment port variable is set service run on that
  port else service run on port 4000 */
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4030;
 
 //add middleware cors and bodyParser to express
 app.use(cors());
