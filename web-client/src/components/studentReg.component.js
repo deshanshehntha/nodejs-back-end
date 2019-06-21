@@ -3,7 +3,7 @@ import logo from '../components/images/sliit_logo.png';
 import axios from 'axios';
 import swal from 'sweetalert';
 
-export default class Login extends Component {
+export default class StudentRegister extends Component {
 
     constructor(props){
         super(props);
@@ -73,7 +73,7 @@ export default class Login extends Component {
                     <div className="text-center">
                         <form className="form-signin" onSubmit={this.onSubmit}>
                             <img class="mb-4" src={logo} alt="" width="60" height="72"/>
-                            <h1 className="h3 mb-1 font-weight-normal" style={{paddingBottom:'10%'}}>Please sign in</h1>
+                            <h1 className="h3 mb-1 font-weight-normal" style={{paddingBottom:'10%'}}> Sign Up</h1>
                             <label for="inputEmail" className="sr-only">Email address</label>
                             <input type="email" className="form-control" 
                                    placeholder="Email address"

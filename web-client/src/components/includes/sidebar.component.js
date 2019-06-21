@@ -1,42 +1,62 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css' 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import logo from '../images/sliit_logo.png'
+
 export default class Header extends Component {
+   
+    constructor(props){
+        super(props);
+        this.logOut = this.logOut.bind(this);      
+    }
+
+    logOut(){
+        sessionStorage.removeItem('isloged');
+        sessionStorage.removeItem('id');
+        sessionStorage.removeItem('regNo');
+        sessionStorage.removeItem('fname');
+        sessionStorage.removeItem('lname');
+        sessionStorage.removeItem('role');
+        sessionStorage.removeItem('email');
+        sessionStorage.removeItem('password');
+
+        this.props.history.push('/');
+
+    }
 
     render() {
         if(sessionStorage.getItem('isloged')){
             return(
-                    <nav class="navbar navbar-expand-lg navbar-dark" style={{background:'#1a237e'}}>
-                        <div class="container">
-                            <a class="navbar-brand" href="#">Container</a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                    <nav className="navbar navbar-expand-lg navbar-dark" style={{background:'#1a237e'}}>
+                        <div className="container">
+                            <a className="navbar-brand" href="#">
+                                <img src={logo} width="32" height="40" />
+                                 <span> Sri Lanka Institute of Information Tecnology</span>
+                                </a>
+                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
                             </button>
 
-                            <div class="collapse navbar-collapse" id="navbarsExample07">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <div className="collapse navbar-collapse">
+                                <form className="form-inline my-5 my-md-2" style={{paddingLeft:'10%'}}>
+                                    <input className="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search"/>
+                                </form>
+                            </div>
+                            <ul className="navbar-nav mr-auto">
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link py-0 dropdown-toggle active" id="dropdown08" 
+                                    data-toggle="dropdown" aria-haspopup="true" 
+                                    aria-expanded="false">Hi , {sessionStorage.getItem('fname')}</a>
+                                    <div className="dropdown-menu" aria-labelledby="dropdown08">
+                                        <a className="dropdown-item" href="#">Action</a>
+                                        <a className="dropdown-item" href="#">Another action</a>
+                                        <a className="dropdown-item" href="#">Something else here</a>
+                                    </div>
                                 </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Disabled</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdown07">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
+                                <li className="nav-item dropdown">
+                                    <button type="button" class="btn btn-sm btn-primary" onClick={this.logOut}>Log Out</button>
                                 </li>
                             </ul>
-                            <form class="form-inline my-2 my-md-0">
-                                <input class="form-control" type="text" placeholder="Search" aria-label="Search"/>
-                            </form>
-                            </div>
+                            
                         </div>
                     </nav>
             );
