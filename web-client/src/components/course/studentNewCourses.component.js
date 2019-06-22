@@ -3,16 +3,11 @@ import axios from 'axios';
 
 const Course = props => (
     <tr>
-        <td>{props.id}</td>
+        {/*<td>{props.id}</td>*/}
         <td>{props.code}</td>
         <td>{props.name}</td>
         <td><input type="button" value="Join" className="btn btn-primary" onClick={props.onClick} id={props.id}/></td>
-        {/* <td>
-            <Link to={"/books/" + props._id}>Book</Link>
-        </td>
-        <td>
-            <Link to={"/books/" + props._id}>Book</Link>
-        </td> */}
+
     </tr>
 );
 
@@ -47,32 +42,17 @@ export default class NewCoursesStudent extends Component {
     }
 
     onClick(e) {
-
-        console.log('click');
-        console.log(sessionStorage.getItem('UserID'));
-        console.log(e.target.id);
-        console.log('http://localhost:4000/node/course/student/join/' + e.target.id + '/' + sessionStorage.getItem('UserID'));
-
-        console.log(this.state.courses);
-
-
-        //var studentsArray = [];
+        var studentsArray = [];
         var course = '';
 
 
         this.state.courses.forEach(element => {
 
             if (element._id === e.target.id) {
-                console.log('ifone');
-                console.log(element._id);
-                console.log(e.target.id);
 
-                //studentsArray.push(sessionStorage.getItem('UserID'));
-                element.students.push(sessionStorage.getItem('UserID'));
-                console.log(element.students);
+                studentsArray.push(sessionStorage.getItem('UserID'));
+                element.students.push(sessionStorage.getItem('id'));
                 course = element;
-                console.log(this.state.courses);
-                console.log(element);
 
 
             }
@@ -81,10 +61,10 @@ export default class NewCoursesStudent extends Component {
         });
 
 
-        axios.post('http://localhost:4000/node/course/student/join/' + e.target.id + '/' + sessionStorage.getItem('UserID'), course)
+        axios.post('http://localhost:4030/api/courses/student/join/' + e.target.id + '/' + sessionStorage.getItem('id'), course)
             .then(response => {
                 console.log(response);
-                //this.setState({ courses: response.data.courses });
+                this.setState({courses: response.data.courses});
             })
             .catch(function (error) {
                 console.log(error);
@@ -98,35 +78,6 @@ export default class NewCoursesStudent extends Component {
 
     render() {
         return (
-
-
-            // <div>
-            //     <br />
-            //     <h3 className=" text-primary"><b>New Course List</b></h3>
-            //     <table className="table table-striped" style={{ marginTop: 20 }}>
-            //         <thead>
-            //             <tr>
-            //                 <th>ID</th>
-            //                 <th>Code</th>
-            //                 <th>Name</th>
-            //                 <th>Actions</th>
-            //             </tr>
-            //         </thead>
-            //         <tbody>
-
-
-            //             {
-            //                 this.state.courses.map((currentCourse, i) => (
-            //                     <Course onClick={this.onClick} id={currentCourse._id} key={i} code={currentCourse.code} name={currentCourse.name} />
-            //                 ))
-            //             }
-
-
-            //         </tbody>
-            //     </table>
-            // </div>
-
-
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-xl-12 col-lg-12 col-md-12">
@@ -154,7 +105,8 @@ export default class NewCoursesStudent extends Component {
                                             {
                                                 this.state.courses.map((currentCourse, i) => (
                                                     <Course onClick={this.onClick} id={currentCourse._id} key={i}
-                                                            code={currentCourse.code} name={currentCourse.name}/>
+                                                            code={currentCourse.course_code}
+                                                            name={currentCourse.course_name}/>
                                                 ))
                                             }
 

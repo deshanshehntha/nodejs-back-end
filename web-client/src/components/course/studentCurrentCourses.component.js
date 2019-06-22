@@ -1,28 +1,14 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-/* in here, we declare new const variable and assign a function with parameter called props.
-but this is not a javascript function. this is like react component.
-so, we can called this react functional component.
-this is a combination of function and component.
-when we called this, it render this component. */
-
 const Course = props => (
     <tr>
-        <td>{props.id}</td>
+        {/*<td>{props.id}</td>*/}
         <td>{props.code}</td>
         <td>{props.name}</td>
         <td><input type="button" value="View Assignments" className="btn btn-primary" onClick={props.onClick}
                    id={props.id}/></td>
         <td><input type="button" value="View Exams" className="btn btn-primary" onClick={props.onClick} id={props.id}/>
         </td>
-        {/* <td>
-            <Link to={"/books/" + props._id}>Book</Link>
-        </td>
-        <td>
-            <Link to={"/books/" + props._id}>Book</Link>
-        </td> */}
+
     </tr>
 );
 
@@ -45,8 +31,8 @@ export default class CurrentCoursesStudent extends Component {
     //this methed invoked after rendering home component and it send a get request to api and api send response with all trains
     componentDidMount() {
         document.title = "Current Courses";
-        console.log(sessionStorage.getItem('UserID'));
-        axios.get('http://localhost:4000/node/course/student/current/' + sessionStorage.getItem('UserID'))
+        console.log(sessionStorage.getItem('id'));
+        axios.get('http://localhost:4030/api/courses/student/current/' + sessionStorage.getItem('id'))
             .then(response => {
                 console.log(response);
                 this.setState({courses: response.data.courses});
@@ -108,36 +94,6 @@ export default class CurrentCoursesStudent extends Component {
 
     render() {
         return (
-
-
-            // <div>
-            //     <br />
-            //     <h3 className=" text-primary"><b>New Course List</b></h3>
-            //     <table className="table table-striped" style={{ marginTop: 20 }}>
-            //         <thead>
-            //             <tr>
-            //                 <th>ID</th>
-            //                 <th>Code</th>
-            //                 <th>Name</th>
-            //                 <th>Actions</th>
-            //                 <th>Actions</th>
-            //             </tr>
-            //         </thead>
-            //         <tbody>
-
-
-            //             {
-            //                 this.state.courses.map((currentCourse, i) => (
-            //                     <Course onClick={this.onClick} id={currentCourse._id} key={i} code={currentCourse.code} name={currentCourse.name} />
-            //                 ))
-            //             }
-
-
-            //         </tbody>
-            //     </table>
-            // </div>
-
-
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-xl-12 col-lg-12 col-md-12">
@@ -153,7 +109,7 @@ export default class CurrentCoursesStudent extends Component {
                                         <table className="table table-bordered" style={{marginTop: 20}}>
                                             <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                {/*<th>ID</th>*/}
                                                 <th>Code</th>
                                                 <th>Name</th>
                                                 <th>Actions</th>
@@ -166,7 +122,7 @@ export default class CurrentCoursesStudent extends Component {
                                             {
                                                 this.state.courses.map((currentCourse, i) => (
                                                     <Course onClick={this.onClick} id={currentCourse._id} key={i}
-                                                            code={currentCourse.code} name={currentCourse.name}/>
+                                                            code={currentCourse.course_code} name={currentCourse.course_name}/>
                                                 ))
                                             }
 

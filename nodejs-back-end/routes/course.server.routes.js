@@ -152,6 +152,88 @@ courseRoutes.route('/all').get(function(req,res){
     });
 });
 
+//Student's New And Current Courses
+courseRoutes.post("/student/join/:courseid/:studentid", (req, res, next) => {
+
+    Course.findById(req.params.courseid, function (err, course) {
+        if (!course)
+            res.status(404).send('Course is not found');
+        else {
+
+            course.code = req.body.code;
+            course.name = req.body.name;
+            course.instructors = req.body.instructors;
+            course.students = req.body.students;
+
+            course.save().then(course => {
+                res.json('Course updated');
+            }).catch(err => {
+                res.status(400).send("Update not possible");
+            });
+        }
+    });
+});
+
+courseRoutes.get("/student/new/:studentid", (req, res, next) => {
+
+    Course.find().exec().then(docs => {
+
+        const courses = [];
+
+        // console.log('---------------------');
+        docs.forEach(course => {
+            var val=false;
+            course.students.forEach(ins => {
+                // console.log('oneeeeeeee');
+                // console.log('param '+req.params.studentid);
+                // console.log('array '+ins);
+                if (ins == req.params.studentid) {
+                    val=true
+                }
+            });
+            if(val===false){
+                courses.push(course);
+            }
+        });
+
+        res.status(200).json({
+            courses: courses
+        });
+
+    }).catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    });
+});
+
+//Current Student Courses
+
+courseRoutes.get("/student/current/:studentid", (req, res, next) => {
+
+    Course.find().exec().then(docs => {
+
+        const courses = [];
+
+        docs.forEach(course => {
+            course.students.forEach(ins => {
+                if (ins == req.params.studentid) {
+                    courses.push(course);
+                }
+            });
+        });
+
+        res.status(200).json({
+            courses: courses
+        })
+
+    }).catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    });
+});
+
 
 
 
