@@ -5,8 +5,8 @@ import axios from 'axios';
 const Course = props => (
     <tr>
         <td>{props.id}</td>
-        <td>{props.course_code}</td>
-        <td>{props.course_name}</td>
+        <td>{props.code}</td>
+        <td>{props.name}</td>
         <td><input type="button" value="Assignments" className="btn btn-primary" onClick={props.onClick} id={props.id}/>
         </td>
         <td><input type="button" value="Exams" className="btn btn-primary" onClick={props.onClick} id={props.id}/></td>
@@ -123,8 +123,8 @@ export default class CurrentCoursesInstructor extends Component {
 
                     {
                         this.state.courses.map((currentCourse, i) => (
-                            <Course onClick={this.onClick} id={currentCourse._id} key={i} code={currentCourse.code}
-                                    name={currentCourse.name}/>
+                            <Course onClick={this.onClick} id={currentCourse._id} key={i} code={currentCourse.course_code}
+                                    name={currentCourse.course_name}/>
                         ))
                     }
                     </tbody>
