@@ -20,6 +20,8 @@ import Show_Assignments_Component from './components/assignments/showassignments
 import Edit_Assignment_Component from './components/assignments/editassignment.component';
 import Settings from './components/admin/settings.component';
 import Students from './components/admin/students.component';
+import StudentNewCourses from './components/course/studentNewCourses.component';
+import StudentCurrentCourses from './components/course/studentCurrentCourses.component';
 import Logout from './components/logout.component';
 
 function App() {
@@ -43,6 +45,8 @@ function App() {
         <Route path="/settings" component={Settings} />
         <Route path="/courses" component={AllCourses} />
         <Route path="/students" component={Students} />
+        <Route path="/newStudentCourses" component={StudentNewCourses}/>
+        <Route path="/currentStudentCourses" component={StudentCurrentCourses}/>
 
       </Router>
   );
