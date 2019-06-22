@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import logo from '../components/images/sliit_logo.png';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -88,9 +89,9 @@ export default class Login extends Component {
                                    onChange={this.onChangePassword}
                                    required/>
                             <br/>
-                            <button className="btn  btn-primary btn-block" type="submit">Sign in</button><br/>
-                            <h6 className="h6 mb-1 font-weight-normal">Don't Have a Account ? Create A Student Account</h6>
-                            
+                            <button className="btn  btn-primary btn-block" type="submit">Sign in</button> 
+                            <h6 className="h6 mb-1 font-weight-normal" >Don't Have a Account ? Create A 
+                            <Link to="/register"> Student Account</Link></h6>
                             <p className="mt-5 mb-3 text-muted">&copy; 2002-2019</p>
 
                         </form>

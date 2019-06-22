@@ -58,30 +58,30 @@ public class SubmissionController {
 	
 	}
 
-	@RequestMapping(value = CommonConstants.SUBMIT_ASSIGNMENT, method = RequestMethod.PUT, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<Object> editSubmission(@RequestParam("file") MultipartFile file,
-			@RequestParam("comment") String comment,
-			@RequestParam("mark") double mark )
-			throws IOException {
-		
-		Submission submission = new Submission();
-			
-		submission.set_id(new ObjectId());
-		submission.setFile(file.getBytes());
-		submission.setFileName(file.getOriginalFilename());
-		submission.setSubmitDate(Generator.getCurrentDate());
-		submission.setSubmitTime(Generator.getCurrentTime());
-		submission.setComment(comment);
-		submission.setMark(mark);
-		submission.setAssignment(new ObjectId());
-
-		repo.save(submission);
-
-		
-		return new ResponseEntity<>(submission, HttpStatus.OK);
-		
-	
-	}
+//	@RequestMapping(value = CommonConstants.SUBMIT_ASSIGNMENT, method = RequestMethod.PUT, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//	public ResponseEntity<Object> editSubmission(@RequestParam("file") MultipartFile file,
+//			@RequestParam("comment") String comment,
+//			@RequestParam("mark") double mark )
+//			throws IOException {
+//		
+//		Submission submission = new Submission();
+//			
+//		submission.set_id(new ObjectId());
+//		submission.setFile(file.getBytes());
+//		submission.setFileName(file.getOriginalFilename());
+//		submission.setSubmitDate(Generator.getCurrentDate());
+//		submission.setSubmitTime(Generator.getCurrentTime());
+//		submission.setComment(comment);
+//		submission.setMark(mark);
+//		submission.setAssignment(new ObjectId());
+//
+//		repo.save(submission);
+//
+//		
+//		return new ResponseEntity<>(submission, HttpStatus.OK);
+//		
+//	
+//	}
 	
 	/*
 	 * This will update the marks of the student

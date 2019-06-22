@@ -33,7 +33,7 @@ export default class Menu extends Component {
             }
             
         }
-        else if(sessionStorage.getItem('role')==='Student'){
+        if(sessionStorage.getItem('role')==='Student'){
             return(
                 <nav className="navbar navbar-expand-lg navbar-dark" style={{background:'#283593'}}>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +67,7 @@ export default class Menu extends Component {
                     </nav>
             );
         }
-        else if(sessionStorage.getItem('role')==='Instructor'){
+        if(sessionStorage.getItem('role')==='Instructor'){
             return(
                 <nav className="navbar navbar-expand-lg navbar-dark" style={{background:'#283593'}}>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
