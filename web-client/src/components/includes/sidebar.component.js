@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Link } from "react-router-dom";
 import logo from '../images/sliit_logo.png'
 
 export default class Header extends Component {
@@ -28,10 +29,10 @@ export default class Header extends Component {
             return(
                     <nav className="navbar navbar-expand-lg navbar-dark" style={{background:'#1a237e'}}>
                         <div className="container">
-                            <a className="navbar-brand" href="#">
+                            <Link className="navbar-brand" to="/">
                                 <img src={logo} width="32" height="40" />
                                  <span> Sri Lanka Institute of Information Tecnology</span>
-                                </a>
+                                </Link>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                             </button>
