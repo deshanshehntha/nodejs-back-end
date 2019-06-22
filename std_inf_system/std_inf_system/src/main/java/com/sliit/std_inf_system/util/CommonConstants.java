@@ -6,6 +6,8 @@ public class CommonConstants {
 	
 	public final static String SUBMIT_ASSIGNMENT = "/assignment/submit";
 	
+	public final static String GET_TIME = "/assignment/time";
+	
 	public final static String UPDATE_SUBMISSION = "/assignment/update";
 	
 	public final static String UPDATE_MARKS = "/assignment/updateMark";

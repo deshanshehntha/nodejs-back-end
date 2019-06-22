@@ -14,7 +14,8 @@ export default class StudentSubmissionComponent extends Component {
             dueDate : '',
             file : '',
             comment : '',
-            mark : ''
+            mark : '',
+            remaining : ''
         }
     }
 
@@ -28,10 +29,25 @@ export default class StudentSubmissionComponent extends Component {
                         startDate : res.data.startDate,
                         dueDate : res.data.dueDate
                     })
+
+                    const data = new FormData();
+
+                    data.append("deadLineDate",res.data.dueDate );
+
+                    axios.post('http://localhost:8080/courseweb/api/assignment/time',data )
+                        .then(response=>{
+                            this.setState({
+                                remaining : response.data
+                            })
+                        })
                 })
                 .catch(err=>{
                     console.log(err);
                 })
+    }
+
+    componentDidUpdate() {
+
     }
 
     render() {
@@ -39,7 +55,7 @@ export default class StudentSubmissionComponent extends Component {
             <div className="container" style={{backgroundColor: "#FFF"}}>
                 <br/><br/><br/>
                 <form onSubmit={this.onFormSubmit}>
-                    <h2>Create Assignment</h2>
+                    <h2>Submit Assignment</h2>
                     <br/><br/>
                     <table className="table">
                         <thead>
@@ -77,6 +93,29 @@ export default class StudentSubmissionComponent extends Component {
 
                             <td>
                                 {this.state.dueDate}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td> Time remaining </td>
+                        </tr>
+                        <tr>
+                            {this.state.remaining}
+                        </tr>
+                        <tr>
+                            <td> Submit File </td>
+
+                            <td>
+                                <input type = "file" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td> Comment </td>
+
+                            <td>
+                                <input type = "text"
+                                       required/>
                             </td>
                         </tr>
 
