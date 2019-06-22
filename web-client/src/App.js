@@ -23,6 +23,7 @@ import Students from './components/admin/students.component';
 import StudentNewCourses from './components/course/studentNewCourses.component';
 import StudentCurrentCourses from './components/course/studentCurrentCourses.component';
 import Logout from './components/logout.component';
+import UpdateProfile from './components/admin/updateProfile.component';
 import StudentAssignmentList from './components/submission/assignment-list.component';
 import CreateAssignmentSubmissionComponent from './components/submission/create-submission.component';
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="/settings" component={Settings} />
         <Route path="/courses" component={AllCourses} />
         <Route path="/students" component={Students} />
+        <Route path="/user/:id" component={UpdateProfile} />
         <Route path="/newStudentCourses" component={StudentNewCourses}/>
         <Route path="/currentStudentCourses" component={StudentCurrentCourses}/>
         <Route path="/studentAssignmentList" component = {StudentAssignmentList} />

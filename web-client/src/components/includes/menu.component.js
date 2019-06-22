@@ -78,20 +78,18 @@ export default class Menu extends Component {
                         <a className="nav-link py-0" href="#">Profile<span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-
                         <a className="nav-link py-0" href="courseList">New Courses</a>
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link py-0" href="currentCourseList">Current Courses</a>
-
-                            <Link to="/addassignment">Add Assignment</Link>
-
+                        <a className="nav-link py-0" href="currentCourseList">Current Courses</a>
+                        </li>
+                        <li className="nav-item" >
+                        <Link className="nav-link py-0" to="/addassignment">Add Assignment</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/showinsassignments/">Modify Assignment</Link>
+                        <Link className="nav-link py-0" to="/showinsassignments/">Modify Assignment</Link>
                         </li>
-
                     </ul>
                     </div>
                 </nav>
