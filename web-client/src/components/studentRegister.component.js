@@ -78,38 +78,27 @@ export default class StudentRegister extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        const user= {
-            email:this.state.email,
-            password:this.state.password
-        }
-
-        axios.post('http://localhost:8080/api/user/validate/', user)
-            .then(result => {
-
-                let validUser=result.data;
-                if(result.data===[]){
-                    this.state={
-                        email:'',
-                        password:''
-                    }
-                    swal("Invalid", "Invalid Username or Password", "error");
-                }else{
-                    //create session variables and assign currently logged user details as values
-                    sessionStorage.setItem('isloged',true);
-                    sessionStorage.setItem('id',validUser.id);
-                    sessionStorage.setItem('regNo',validUser.regNo);
-                    sessionStorage.setItem('fname',validUser.fname);
-                    sessionStorage.setItem('lname',validUser.lname);
-                    sessionStorage.setItem('role',validUser.role);
-                    sessionStorage.setItem('email',validUser.email);
-                    sessionStorage.setItem('password',validUser.password);
-
-                   this.props.history.push('/');
+        if(this.state.password !== '' && this.state.confirmPassword !== ''){
+            if(this.state.password === this.state.confirmPassword ){
+                const user= {
+                    regNo:this.state.regNo,
+                    fname:this.state.fname,
+                    lname:this.state.lname,
+                    role:'Student',
+                    email:this.state.email,
+                    password:this.state.password,
                 }
-            }).catch(error => {
-                swal("Invalid", "Invalid Username or Password", "error");
-            });
 
+                axios.post('http://localhost:4030/api/users/add', user)
+                    .then(result => {
+                        swal("Successful", "Account adding Successfull", "success");
+                        this.props.history.push('/');
+                    }).catch(error => {
+                        swal("Error", "Error in adding Account", "error");
+                    });
+            }
+
+        }
     }
     
     render() {
