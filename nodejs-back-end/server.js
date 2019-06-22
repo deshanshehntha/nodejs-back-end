@@ -12,6 +12,7 @@ const mongoose = require('mongoose');
 const courseRoutes = require('./routes/course.server.routes');
 const userRoutes = require('./routes/user.server.routes');
 const submmissionRoutes = require('./routes/submission.server.routes');
+const assignmentRoutes =require('./routes/assignment.server.routes');
 /*if the environment port variable is set service run on that
  port else service run on port 4000 */
 const PORT = process.env.PORT || 4030;
@@ -34,6 +35,8 @@ connection.once('open',function(){
 app.use('/api/courses',courseRoutes);
 app.use('/api/users',userRoutes);
 app.use('/api/submission',submmissionRoutes);
+app.use('/api/assignments',assignmentRoutes);
+
 
 //start the server using express
 app.listen(PORT,function(){
