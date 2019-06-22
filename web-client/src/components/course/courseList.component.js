@@ -40,10 +40,6 @@ export default class CourseList extends Component {
                 console.log(error);
             })
     }
-
-
-
-
     onClick(e) {
 
         var course='';

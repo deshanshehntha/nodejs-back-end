@@ -11,12 +11,12 @@ const Assignmet = props =>(
         <td>{props.assignment.dueDate}</td>
         <td>{props.assignment.startDate}</td>
         <td>
-            <Link to={"/submit/"+props.assignment._id}>Submit</Link>
+            <Link to={"/createSubmission/"+props.assignment._id}>Submit</Link>
         </td>
     </tr>
 )
 
-export default class CourseList extends Component {
+export default class StudentAssignmentList extends Component {
     constructor(props) {
         super(props);
 

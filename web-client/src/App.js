@@ -24,6 +24,7 @@ import StudentNewCourses from './components/course/studentNewCourses.component';
 import StudentCurrentCourses from './components/course/studentCurrentCourses.component';
 import Logout from './components/logout.component';
 import StudentAssignmentList from './components/submission/assignment-list.component';
+import CreateAssignmentSubmissionComponent from './components/submission/create-submission.component';
 
 function App() {
   return (
@@ -49,6 +50,8 @@ function App() {
         <Route path="/newStudentCourses" component={StudentNewCourses}/>
         <Route path="/currentStudentCourses" component={StudentCurrentCourses}/>
         <Route path="/studentAssignmentList" component = {StudentAssignmentList} />
+        <Route path="/createSubmission/:id" component = {CreateAssignmentSubmissionComponent} />
+
       </Router>
   );
 }
