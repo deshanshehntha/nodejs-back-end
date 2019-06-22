@@ -14,10 +14,6 @@ export default class Header extends Component {
                                 <img src={logo} width="32" height="40" />
                                  <span> Sri Lanka Institute of Information Tecnology</span>
                                 </Link>
-                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                            </button>
-
                             <div className="collapse navbar-collapse">
                                 <form className="form-inline my-5 my-md-2" style={{paddingLeft:'10%'}}>
                                     <input className="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search"/>
@@ -29,13 +25,10 @@ export default class Header extends Component {
                                     data-toggle="dropdown" aria-haspopup="true" 
                                     aria-expanded="false">Hi , {sessionStorage.getItem('fname')}</a>
                                     <div className="dropdown-menu" aria-labelledby="dropdown08">
-                                        <a className="dropdown-item" href="#">Action</a>
-                                        <a className="dropdown-item" href="#">Another action</a>
-                                        <a className="dropdown-item" href="#">Something else here</a>
+                                        <Link className="dropdown-item"  to="/logout">Log Out</Link>
+                                        <hr></hr>
+                                        <Link className="dropdown-item" to={"/user/"+sessionStorage.getItem('id')}>Profile</Link>
                                     </div>
-                                </li>
-                                <li className="nav-item dropdown">
-                                    <Link class="btn btn-sm btn-primary" to="/logout">Log Out</Link>
                                 </li>
                             </ul>
                             

@@ -22,8 +22,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //crate connection
-mongoose.connect('mongodb+srv://root:root@cluster0-pbjoq.mongodb.net/Course_Web?retryWrites=true&w=majority',{useNewUrlParser:true});
+mongoose.connect('mongodb://root:root@cluster0-shard-00-00-pbjoq.mongodb.net:27017,cluster0-shard-00-01-pbjoq.mongodb.net:27017,cluster0-shard-00-02-pbjoq.mongodb.net:27017/Course_Web?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority\n',{useNewUrlParser:true});
 //get a instance of a connection
+
 const connection =mongoose.connection;
 
 //check DB connection

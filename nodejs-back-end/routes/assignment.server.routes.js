@@ -28,8 +28,7 @@ Get the submission by submission id
 router.get("/find/:assignmentId",function (req,res) {
     const id = req.params.assignmentId;
     console.log(req);
-    assignments.find({_id : id })
-        .populate("assignment")
+    assignments.findById({_id : id })
         .exec()
         .then(assignment =>{
             if( assignment ){

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Course = props => (
     <tr>
-        <td>{props.id}</td>
+        {/*<td>{props.id}</td>*/}
         <td>{props.code}</td>
         <td>{props.name}</td>
         <td><input type="button" value="Assignments" className="btn btn-primary" onClick={props.onClick} id={props.id}/>
@@ -105,13 +105,13 @@ export default class CurrentCoursesInstructor extends Component {
         return (
 
 
-            <div>
+            <div className="container">
                 <br/>
-                <h3 className=" text-primary"><b>Current Course List</b></h3>
+                <h3 className="h3 mb-1 font-weight-normal ">Current Course List</h3>
                 <table className="table table-striped" style={{marginTop: 20}}>
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        {/*<th>ID</th>*/}
                         <th>Code</th>
                         <th>Name</th>
                         <th>Actions</th>
