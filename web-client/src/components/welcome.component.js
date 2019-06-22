@@ -6,6 +6,8 @@ export default class Login extends Component {
     componentDidMount(){
         if(!sessionStorage.getItem('isloged')){
             this.props.history.push('/login');
+        }else {
+            this.props.history.push('/courseList');
         }
     }
 

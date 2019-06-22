@@ -5,10 +5,12 @@ import './App.css';
 
 import Menu from './components/includes/menu.component';
 import Header from './components/includes/sidebar.component';
-
 import Login from './components/login.component';
-import Welcome from './components/welcome.component'; 
+import Welcome from './components/welcome.component';
+import AddCourse from './components/course/addCourse.component';
+import CourseList from './components/course/courseList.component'
 import StudentReg from './components/studentReg.component';
+
 
 
 function App() {
@@ -21,11 +23,15 @@ function App() {
             <Header/>
             <Menu/>
           </div>
-          <div className="col-xs-12">
+          <div className="col-md-12 col-xs-12">
            <div className="container-fluid">
               	<Route exact path="/" component={Welcome}/>
+
+               <Route path="/addCourse" component={AddCourse}/>
+               <Route path="/courseList" component={CourseList}/>
                 <Route exact path="/register" component={StudentReg}/>  
            </div>
+
           </div>
         </div>
       </Router>

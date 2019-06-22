@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-//define collections and schema for trains
+
 
 let Course = new Schema({
 
@@ -12,15 +12,15 @@ let Course = new Schema({
         course_code: {
             type: String
         },
-        instructors:[{
-            instructor:{type:String,required:true},
-            status:{type:String}
+        instructors: [{
+            instructor: {type: Schema.Types.ObjectId, required: true, ref: 'User'},
+            status: {type: String}
+        }],
 
-        }]
+
+        students: [{type: Schema.Types.ObjectId, required: false, ref: 'User'}]
 
 
     }
 );
-
-
 module.exports = mongoose.model('Course', Course);
