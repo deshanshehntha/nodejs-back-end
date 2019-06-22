@@ -80,10 +80,10 @@ export default class Menu extends Component {
                         <a className="nav-link py-0" href="#">Profile<span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link py-0" href="#">Courses</a>
+                            <Link to="/addassignment">Add Assignment</Link>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link py-0 disabled" href="#">Students</a>
+                            <Link to="/showinsassignments/">Modify Assignment</Link>
                         </li>
                         <li className="nav-item dropdown">
                         <a className="nav-link py-0 dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Courses</a>

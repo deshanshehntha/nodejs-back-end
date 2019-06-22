@@ -9,4 +9,8 @@ public class CommonConstants {
 	public final static String UPDATE_SUBMISSION = "/assignment/update";
 	
 	public final static String UPDATE_MARKS = "/assignment/updateMark";
+	
+	public final static String ADD_NEW_ASSIGNMENT = "/newassignment/add";
+	
+	
 }
