@@ -56,7 +56,7 @@ class Edit_Assignment_Component extends React.Component {
     onFormSubmit(e) {
         e.preventDefault(); // Stop form submit
         const data = new FormData();
-
+        console.log(this.state.file);
         data.append("file", this.state.file);
         data.append("subject", this.state.subject);
         data.append("assignmentName", this.state.assignmentName);
@@ -64,8 +64,8 @@ class Edit_Assignment_Component extends React.Component {
         data.append("dueDate", this.state.dueDate);
         data.append("startDate", this.state.startDate);
 
-        const url = 'http://localhost:8081/courseweb/api/newassignment/add';
-        axios.post(url, data).then(res => {
+        const url = 'http://localhost:8081/courseweb/api/newassignment/update';
+        axios.put(url, data).then(res => {
             console.log(res);
         }).catch(err => {
             console.log(err);
@@ -168,7 +168,7 @@ class Edit_Assignment_Component extends React.Component {
                     </table>
                     <div className="form-group">
                         <input type="submit"
-                               value="Add Assignment"
+                               value="Edit Assignment"
                                className="btn btn-primary"/>
                     </div>
                 </form>

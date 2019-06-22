@@ -12,5 +12,6 @@ public class CommonConstants {
 	
 	public final static String ADD_NEW_ASSIGNMENT = "/newassignment/add";
 	
+	public final static String UPDATE_ASSIGNMENT = "/newassignment/update";
 	
 }
