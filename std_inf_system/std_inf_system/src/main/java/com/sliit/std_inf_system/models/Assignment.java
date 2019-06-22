@@ -20,8 +20,8 @@ public class Assignment {
 	private String dueDate;
 	private String startDate;
 	
-	public ObjectId get_id() {
-		return _id;
+	public String get_id() {
+		return _id.toHexString();
 	}
 	public void set_id(ObjectId _id) {
 		this._id = _id;

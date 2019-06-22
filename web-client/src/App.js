@@ -23,6 +23,7 @@ import Students from './components/admin/students.component';
 import StudentNewCourses from './components/course/studentNewCourses.component';
 import StudentCurrentCourses from './components/course/studentCurrentCourses.component';
 import Logout from './components/logout.component';
+import StudentAssignmentList from './components/submission/assignment-list.component';
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
         <Route path="/students" component={Students} />
         <Route path="/newStudentCourses" component={StudentNewCourses}/>
         <Route path="/currentStudentCourses" component={StudentCurrentCourses}/>
-
+        <Route path="/studentAssignmentList" component = {StudentAssignmentList} />
       </Router>
   );
 }

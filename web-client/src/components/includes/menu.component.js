@@ -53,6 +53,10 @@ export default class Menu extends Component {
                                 <a className="nav-link py-0" href="currentStudentCourses">Current Courses</a>
                             </li>
 
+                            <li className="nav-item">
+                                <a className="nav-link py-0" href="studentAssignmentList">Current Courses</a>
+                            </li>
+
 
                         </ul>
                         </div>

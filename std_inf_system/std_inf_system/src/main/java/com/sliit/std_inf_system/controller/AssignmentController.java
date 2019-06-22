@@ -50,6 +50,32 @@ public class AssignmentController {
 
 		
 		return new ResponseEntity<>(assgnment, HttpStatus.OK);
+		}
+	
+	@RequestMapping(value = CommonConstants.UPDATE_ASSIGNMENT, method = RequestMethod.PUT, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<Object> editSubmission(@RequestParam("file") byte file[],
+			@RequestParam("subject") String subject,
+			@RequestParam("assignmentName") String assignmentName,
+			@RequestParam("description") String description,
+			@RequestParam("dueDate") String dueDate,
+			@RequestParam("startDate") String startDate) 
+			throws IOException {
+		
+		Assignment assgnment = new Assignment();
+		assgnment.set_id(new ObjectId());
+		assgnment.setFile(file);
+		assgnment.setSubject(subject);
+		assgnment.setAssignmentName(assignmentName);
+		assgnment.setDescription(description);
+		assgnment.setDueDate(dueDate);
+		assgnment.setStartDate(startDate);
+		repo.save(assgnment);
+
+
+		repo.save(assgnment);
+
+		
+		return new ResponseEntity<>(assgnment, HttpStatus.OK);
 		
 	
 	}
