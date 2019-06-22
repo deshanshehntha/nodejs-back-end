@@ -1,16 +1,31 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+const Instructor = props => (
+
+    <div className='form-group'>
+        <label>{props.fname} {props.lname}
+            <input type='checkbox' name={props.id} className='form-check' onChange={props.onChange}/>
+        </label>
+    </div>
+);
+
 export default class addCourse extends Component {
     constructor(props) {
         super(props);
         this.onChangeCourseName = this.onChangeCourseName.bind(this);
         this.onChangeCourseCode = this.onChangeCourseCode.bind(this);
+
+        this.onChangeCheckInstructor = this.onChangeCheckInstructor.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             course_name: '',
-            course_code: ''
+            course_code: '',
+            checkBoxes: [],
+            instructors: [],
+            students: [],
+            msg: 'Please Check  entire Details again!! '
         }
     }
 
@@ -26,22 +41,86 @@ export default class addCourse extends Component {
         });
     }
 
+    onChangeCheckInstructor(e) {
+        console.log(e.target.name);
+
+        if (e.target.checked) {
+            const array = this.state.checkBoxes;
+            array.push(e.target.name);
+            this.setState({
+                checkBoxes: array
+            })
+        } else {
+            const array = this.state.checkBoxes;
+            const index = array.indexOf(e.target.name);
+            console.log(index);
+            array.splice(index, 1);
+            console.log(array);
+            this.setState({
+                checkBoxes: array
+            })
+        }
+    }
+
+    // this method invoked after rendering signup component
+    componentDidMount() {
+        document.title = "Add Course";
+
+
+        axios.get('http://localhost:4030/api/users/instructors').then(response => {
+            console.log(response.data.instructors);
+            this.setState({
+                instructors: response.data.instructors
+            });
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+
     onSubmit(e) {
         e.preventDefault();
+
+
+        const newIns = [];
+
+        this.state.checkBoxes.forEach(element => {
+            const newObj = {
+                instructor: element,
+                status: 'not-accepted'
+            };
+            newIns.push(newObj);
+        });
         const courseObj = {
             course_name: this.state.course_name,
             course_code: this.state.course_code,
+            instructors: newIns,
+            students: []
         };
         axios.post('http://localhost:4030/api/courses/addCourse', courseObj)
-            .then(res => {
+            .then(result => {
 
-                if (res.data.isAdd) {
-                    this.props.history.push({
+                console.log(result);
 
-                        pathname: '/courseDetails',
-                    });
-                }
+                this.setState({
+                    course_name: '',
+                    course_code: '',
+                    checkBoxes: [],
+                    instructors: [],
+                    students: [],
+                    msg: 'Please Check  entire Details again!! '
+                });
+
+
+                this.props.history.push("/");
+
+            }).catch(error => {
+            console.log(error);
+            this.setState({
+                msg: ' There are some Errors'
             });
+
+        });
     }
 
     render() {
@@ -62,6 +141,17 @@ export default class addCourse extends Component {
                             <input type="text" className="form-control"
                                    value={this.course_code}
                                    onChange={this.onChangeCourseCode}/>
+                        </div>
+
+
+                        <div className='form-group'>
+                            {
+                                this.state.instructors.map((currentInstructor, i) => (
+                                        <Instructor id={currentInstructor._id} key={i} fname={currentInstructor.fname} lname={currentInstructor.lname}
+                                                    onChange={this.onChangeCheckInstructor}/>
+                                    )
+                                )
+                            }
                         </div>
                         <br/>
                         <div className="col-md-6">

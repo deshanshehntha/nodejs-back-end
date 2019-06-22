@@ -5,9 +5,7 @@ import './App.css';
 
 import Menu from './components/includes/menu.component';
 import Header from './components/includes/sidebar.component';
-
 import Login from './components/login.component';
-
 import Welcome from './components/welcome.component';
 import AddCourse from './components/course/addCourse.component';
 import CourseList from './components/course/courseList.component'
