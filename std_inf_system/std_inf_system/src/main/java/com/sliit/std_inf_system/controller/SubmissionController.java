@@ -36,7 +36,9 @@ public class SubmissionController {
 	@RequestMapping(value = CommonConstants.SUBMIT_ASSIGNMENT, method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<Object> submitAssignment(@RequestParam("file") MultipartFile file,
 			@RequestParam("comment") String comment,
-			@RequestParam("mark") double mark )
+			@RequestParam("mark") double mark,
+			@RequestParam("assignment") ObjectId assignment,
+			@RequestParam("userId") ObjectId userID)
 			throws IOException {
 		
 		Submission submission = new Submission();
@@ -49,6 +51,8 @@ public class SubmissionController {
 		submission.setComment(comment);
 		submission.setMark(mark);
 		submission.setAssignment(new ObjectId());
+		submission.setAssignment(assignment);
+		submission.setUserId(userID);
 
 		repo.save(submission);
 

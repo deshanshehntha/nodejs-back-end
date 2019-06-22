@@ -94,7 +94,7 @@ export default class StudentRegister extends Component {
                         swal("Successful", "Account adding Successfull", "success");
                         this.props.history.push('/');
                     }).catch(error => {
-                        swal("Error", "Error in adding Account", "error");
+                        swal("Error", "Error in adding Account :Email or Reg number may be already in use", "error");
                     });
             }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import swal from "sweetalert";
 
 
 class Edit_Assignment_Component extends React.Component {
@@ -17,6 +18,7 @@ class Edit_Assignment_Component extends React.Component {
             startDate: ''
 
         };
+
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.onChangeFile = this.onChangeFile.bind(this);
         this.onSubjectChange = this.onSubjectChange.bind(this);
@@ -24,6 +26,7 @@ class Edit_Assignment_Component extends React.Component {
         this.onChangeDueDate = this.onChangeDueDate.bind(this);
         this.onChangeStartDate = this.onChangeStartDate.bind(this);
         this.onChangeAssignmentName = this.onChangeAssignmentName.bind(this);
+        this.onDeleteAssignment = this.onDeleteAssignment.bind(this);
         this.countryData = [
             {value: 'SE1010', name: 'SE1010'},
             {value: 'SE1020', name: 'SE2020'}
@@ -35,15 +38,15 @@ class Edit_Assignment_Component extends React.Component {
         console.log(this.props.match.params.id);
         axios.get('http://localhost:4030/api/assignments/find/'+this.props.match.params.id)
             .then(response => {
-                console.log(response.data[0].subject);
+                console.log("subject"+ response.data.subject);
                 this.setState({
-                    subject: response.data[0].subject,
-                    file: response.data[0].file,
-                    country: response.data[0].country,
-                    assignmentName: response.data[0].assignmentName,
-                    description: response.data[0].description,
-                    dueDate: response.data[0].dueDate,
-                    startDate: response.data[0].startDate,
+                    subject: response.data.subject,
+                    file: response.data.file,
+                    country: response.data.country,
+                    assignmentName: response.data.assignmentName,
+                    description: response.data.description,
+                    dueDate: response.data.dueDate,
+                    startDate: response.data.startDate,
 
                 });
             })
@@ -52,6 +55,20 @@ class Edit_Assignment_Component extends React.Component {
             })
     }
 
+    onDeleteAssignment(e){
+        e.preventDefault();
+
+        axios.delete("http://localhost:4030/api/assignments/delete/"+this.props.match.params.id )
+            .then(res=>{
+                console.log(res.data);
+
+                swal("Deleted Successfully", "You deleted the Assignment", "success")
+                this.props.history.push("/showinsassignments");
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    }
 
     onFormSubmit(e) {
         e.preventDefault(); // Stop form submit
@@ -65,9 +82,12 @@ class Edit_Assignment_Component extends React.Component {
         data.append("startDate", this.state.startDate);
         data.append("_id", this.props.match.params.id);
 
-        const url = 'http://localhost:8081/courseweb/api/newassignment/update';
+        const url = 'http://localhost:8080/courseweb/api/newassignment/update';
         axios.put(url, data).then(res => {
             console.log(res);
+
+            this.props.history.push('/editinsassignments/'+res.data._id);
+
         }).catch(err => {
             console.log(err);
         });
@@ -165,6 +185,12 @@ class Edit_Assignment_Component extends React.Component {
                                        onChange={(e) => this.onChangeStartDate(e)}/></td>
                             {/*<td>act@example.com</td>*/}
                         </tr>
+                        <tr className="active">
+                            <td>File </td>
+                            <td><input type="file"
+                                       onChange={(e) => this.onChangeFile(e)}/></td>
+                            {/*<td>act@example.com</td>*/}
+                        </tr>
                         </tbody>
                     </table>
                     <div className="form-group">
@@ -173,6 +199,9 @@ class Edit_Assignment_Component extends React.Component {
                                className="btn btn-primary"/>
                     </div>
                 </form>
+
+                <input type = "button"  value="Delete Assignment"
+                       className="btn btn-primary" onClick={this.onDeleteAssignment} />
             </div>
         )
     }
