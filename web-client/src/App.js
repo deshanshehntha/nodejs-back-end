@@ -21,6 +21,7 @@ import Edit_Assignment_Component from './components/assignments/editassignment.c
 import Settings from './components/admin/settings.component';
 import Students from './components/admin/students.component';
 import Logout from './components/logout.component';
+import UpdateProfile from './components/admin/updateProfile.component';
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
         <Route path="/settings" component={Settings} />
         <Route path="/courses" component={AllCourses} />
         <Route path="/students" component={Students} />
-
+        <Route path="/user/:id" component={UpdateProfile} />
       </Router>
   );
 }

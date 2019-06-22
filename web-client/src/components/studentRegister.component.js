@@ -104,7 +104,7 @@ export default class StudentRegister extends Component {
     render() {
         return (
             <div style={{background:'#e0e0e0'}}>
-                <div className="col-md-2 offset-md-5" style={{paddingTop:'12vh',paddingBottom:'23.5vh'}}>
+                <div className="col-md-3  mx-auto" style={{paddingTop:'12vh',paddingBottom:'23.5vh'}}>
                     <div className="text-center">
                         <form className="form-signin" onSubmit={this.onSubmit}>
                             <img class="mb-4" src={logo} alt="" width="60" height="72"/>
