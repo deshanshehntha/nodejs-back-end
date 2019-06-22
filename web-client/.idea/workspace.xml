@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f6fb1c8-b546-41d0-97e0-3df28b752526" name="Default Changelist" comment="Course Front end inital">
-      <change beforePath="$PROJECT_DIR$/../nodejs-back-end/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../nodejs-back-end/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nodejs-back-end/models/course.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/../nodejs-back-end/models/course.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nodejs-back-end/routes/user.server.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../nodejs-back-end/routes/user.server.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../std_inf_system/std_inf_system/target/classes/META-INF/maven/com.sliit/std_inf_system/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../std_inf_system/std_inf_system/target/classes/META-INF/maven/com.sliit/std_inf_system/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/course/addCourse.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/course/addCourse.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/welcome.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/welcome.component.js" afterDir="false" />
-    </list>
+    <list default="true" id="1f6fb1c8-b546-41d0-97e0-3df28b752526" name="Default Changelist" comment="Course Front end inital" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -227,7 +218,7 @@
       <option name="presentableId" value="Default" />
       <updated>1561119397086</updated>
       <workItem from="1561119398343" duration="9849000" />
-      <workItem from="1561176358369" duration="1047000" />
+      <workItem from="1561176358369" duration="1138000" />
     </task>
     <task id="LOCAL-00001" summary="Course Front end inital">
       <created>1561140041840</created>
@@ -240,7 +231,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10896000" />
+    <option name="totallyTimeSpent" value="10987000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
