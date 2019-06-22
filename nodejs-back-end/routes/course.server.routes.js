@@ -68,7 +68,7 @@ courseRoutes.get("/instructor/new/:instructorid", (req, res, next) => {
         docs.forEach(course => {
             course.instructors.forEach(ins => {
                 if (ins.instructor == req.params.instructorid) {
-                    if (ins.status == 'not-accepted') {
+                    if (ins.status =='not-accepted') {
                         courses.push(course);
                     }
                 }
@@ -85,5 +85,60 @@ courseRoutes.get("/instructor/new/:instructorid", (req, res, next) => {
         });
     });
 });
+
+// accepted courses by Instructer
+
+courseRoutes.get("/instructor/current/:instructorid", (req, res, next) => {
+
+    Course.find().exec().then(docs => {
+
+        const courses = [];
+
+        docs.forEach(course => {
+            course.instructors.forEach(ins => {
+                if (ins.instructor == req.params.instructorid) {
+                    if (ins.status =='accepted') {
+                        courses.push(course);
+                    }
+                }
+            });
+        });
+
+        res.status(200).json({
+            courses: courses
+        })
+
+    }).catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    });
+});
+
+
+//click button accept
+
+
+courseRoutes.post("/instructor/accept/:courseid/:instructorid", (req, res, next) => {
+
+    Course.findById(req.params.courseid, function (err, course) {
+        if (!course)
+            res.status(404).send('Course is not found');
+        else {
+
+            course.couese_code = req.body.couese_code;
+            course.course_name = req.body.course_name;
+            course.instructors = req.body.instructors;
+            course.students = req.body.students;
+
+            course.save().then(course => {
+                res.json('Course updated');
+            }).catch(err => {
+                res.status(400).send("Update not possible");
+            });
+        }
+    });
+});
+
 
 module.exports = courseRoutes;
