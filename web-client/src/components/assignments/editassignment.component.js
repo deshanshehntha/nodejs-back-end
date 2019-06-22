@@ -64,7 +64,7 @@ class Edit_Assignment_Component extends React.Component {
         data.append("dueDate", this.state.dueDate);
         data.append("startDate", this.state.startDate);
 
-        const url = 'http://localhost:8081/courseweb/api/newassignment/add';
+        const url = 'http://localhost:4030/api/assignments/update/'+this.props.match.params.id;
         axios.post(url, data).then(res => {
             console.log(res);
         }).catch(err => {
