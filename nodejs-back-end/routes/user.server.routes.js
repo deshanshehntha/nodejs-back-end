@@ -75,6 +75,36 @@ Router.get("/admins", (req, res, next) => {
     });
 
 });
+//get all students
+Router.get("/students", (req, res, next) => {
+
+    User.find().exec().then(docs => {
+
+        //res.json(docs);
+
+        const students = [];
+
+        docs.forEach(user => {
+
+            if (user.role == 'Student') {
+                students.push(user);
+            }
+
+        });
+
+        res.status(200).json({
+            students: students
+        })
+
+    }).catch(err => {
+
+        res.status(500).json({
+            error: err
+        });
+
+    });
+
+});
 
 //get a specific user 
 Router.route('/:id').get(function(req,res){

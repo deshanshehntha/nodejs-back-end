@@ -18,6 +18,7 @@ import Add_Assignment_Component from './components/assignments/addassignment.com
 import Show_Assignments_Component from './components/assignments/showassignments.component';
 import Edit_Assignment_Component from './components/assignments/editassignment.component';
 import Settings from './components/admin/settings.component';
+import Students from './components/admin/students.component';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/editinsassignments/" component={Edit_Assignment_Component} />
         <Route path="/settings" component={Settings} />
         <Route path="/courses" component={AllCourses} />
+        <Route path="/students" component={Students} />
       </Router>
   );
 }

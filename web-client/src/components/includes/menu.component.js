@@ -25,7 +25,7 @@ export default class Menu extends Component {
                             <Link className="nav-link py-0 " to ="/instructores">Instructors</Link>
                             </li>
                             <li className="nav-item">
-                            <a className="nav-link py-0 " href="#">Students</a>
+                            <Link className="nav-link py-0 " to="/students">Students</Link>
                             </li>
                         </ul>
                         </div>
