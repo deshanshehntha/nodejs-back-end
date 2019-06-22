@@ -58,8 +58,9 @@ export default class Login extends Component {
                     sessionStorage.setItem('role',validUser.role);
                     sessionStorage.setItem('email',validUser.email);
                     sessionStorage.setItem('password',validUser.password);
-
-                   this.props.history.push('/');
+                    
+                    this.props.history.push('/');
+                    window.location.reload();
                 }
             }).catch(error => {
                 swal("Invalid", "Invalid Username or Password", "error");
