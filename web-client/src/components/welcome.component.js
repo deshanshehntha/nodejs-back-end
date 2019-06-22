@@ -12,7 +12,7 @@ export default class Login extends Component {
     render() {
         return (
             <div >
-                <div class="jumbotron" style={{backgroundImage: `url(${main_background})`, backgroundSize: 'cover' }}>
+                <div class="jumbotron" style={{height:'100%',backgroundImage: `url(${main_background})`, backgroundSize: 'cover' }}>
                     <div class="container"style={{color:'white',backgroundColor: 'rgba(0,0,0,.5)',padding:'10px'}}>
                     <h1 class="display-3" >Welcome to SLIIT!</h1>
                     <p style={{color:'white'}} >We are a leading non-state degree awarding institute approved 
@@ -24,6 +24,20 @@ export default class Login extends Component {
                     <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
                     </div>
                 </div>
+                <div className="container">
+                    <div class="card">
+                        <div class="card-header" style={{background:'#283593',color:'white'}}>
+                        Latest announcements
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Robotics Workshop</li>
+                            <li class="list-group-item">Submission of A/L Certified True Copy of Result Sheet</li>
+                            <li class="list-group-item">Prorata Registration Notice FoE (June- Dec 2019)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+
             </div>
         )
     }
