@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-
+import swal from 'sweetalert';
 
 export default class SingleSubmission extends Component {
     constructor(props) {
@@ -10,6 +10,7 @@ export default class SingleSubmission extends Component {
         this.onChangeComment = this.onChangeComment.bind(this);
         this.onChangeFile = this.onChangeFile.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.onDeleteSubmission = this.onDeleteSubmission.bind(this);
 
         this.state = {
             subject : '',
@@ -33,7 +34,7 @@ export default class SingleSubmission extends Component {
                 this.setState({
                     comment : res.data.comment,
                     fileName : res.data.fileName,
-                    assignmentId : res.data.assignmentId
+                    assignmentId : res.data.assignment
                 })
 
                 axios.get('http://localhost:4030/api/assignments/find/'+res.data.assignment )
@@ -79,6 +80,21 @@ export default class SingleSubmission extends Component {
         })
     }
 
+    onDeleteSubmission(e){
+
+        e.preventDefault();
+
+        axios.delete("http://localhost:4030/api/submission/delete/"+this.props.match.params.id )
+            .then(res=>{
+                console.log(res.data);
+                swal("Deleted Successfully", "You deleted the Submission", "success")
+                this.props.history.push("/studentAssignmentList");
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    }
+
     onFormSubmit(e){
         e.preventDefault();
 
@@ -87,13 +103,13 @@ export default class SingleSubmission extends Component {
         data.append("file", this.state.file );
         data.append("comment", this.state.comment );
         data.append("mark", 0 );
-        data.append("assignment", this.props.match.params.id);
+        data.append("assignment", this.state.assignmentId);
         data.append("userId", sessionStorage.getItem("id"))
 
         axios.put("http://localhost:8080/courseweb/api/assignment/submit" , data )
             .then(res=>{
                 console.log(res.data);
-                this.props.history.push('/showSubmission/'+this.state.assignmentId);
+                this.props.history.push('/showSubmission/'+res.data._id);
             })
             .catch(err=>{
                 console.log(err);
@@ -152,9 +168,9 @@ export default class SingleSubmission extends Component {
 
                         <tr>
                             <td> Time remaining </td>
-                        </tr>
-                        <tr>
-                            {this.state.remaining}
+                            <td>
+                                {this.state.remaining}
+                            </td>
                         </tr>
                         <tr>
                             <td> Submit File </td>
@@ -185,6 +201,14 @@ export default class SingleSubmission extends Component {
                         <input type="submit"
                                value="Edit Submission"
                                className="btn btn-primary"/>
+                    </div>
+
+                    <div className="form-group">
+                        <input type="button"
+                               value="Delete Submission"
+                               className="btn btn-primary"
+                                onClick={this.onDeleteSubmission}
+                        />
                     </div>
                 </form>
             </div>
