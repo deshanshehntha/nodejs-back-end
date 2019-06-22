@@ -11,6 +11,7 @@ import AddCourse from './components/course/addCourse.component';
 import CourseList from './components/course/courseList.component'
 import StudentRegister from './components/studentRegister.component';
 import Instructors from './components/admin/instructors.component';
+import AddInstructors from './components/admin/addInstructors.component';
 import Add_Assignment_Component from './components/assignments/addassignment.component';
 import Show_Assignments_Component from './components/assignments/showassignments.component';
 import Edit_Assignment_Component from './components/assignments/editassignment.component'
@@ -27,9 +28,11 @@ function App() {
         <Route path="/addCourse" component={AddCourse}/>
         <Route path="/courseList" component={CourseList}/>
         <Route path="/instructores" component={Instructors}/>
+        <Route path="/instructores_add" component={AddInstructors}/>
         <Route path="/addassignment" component={Add_Assignment_Component} />
         <Route path="/showinsassignments/" component={Show_Assignments_Component} />
         <Route path="/editinsassignments/" component={Edit_Assignment_Component} />
+
       </Router>
   );
 }

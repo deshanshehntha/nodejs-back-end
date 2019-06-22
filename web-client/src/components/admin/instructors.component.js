@@ -66,6 +66,7 @@ export default class Instructors extends Component {
             <div className="container">
                 <br/>
                 <h1 className="h3 mb-1 font-weight-normal">Instructores</h1>
+                <div class="float-right" style={{paddingBottom:'4px'}}><Link  class="btn btn-primary btn-sm" to="/instructores_add">Add Instructors</Link></div>
                 <DataTable
                     columns={columns}
                     pagination={true}
