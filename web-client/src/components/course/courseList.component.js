@@ -4,11 +4,11 @@ import {Link} from "react-router-dom";
 
 const Course = props => (
     <tr>
-        <td>{props.id}</td>
+        {/*<td>{props.id}</td>*/}
         <td>{props.code}</td>
         <td>{props.name}</td>
         <td><input type="button" value="Accept" className="btn btn-primary" onClick={props.onClick} id={props.id} /></td>
-      
+
     </tr>
 );
 
@@ -99,7 +99,7 @@ export default class CourseList extends Component {
                 <table className="table table-bordered " style={{marginTop: 20}}>
                     <thead>
                     <tr>
-                        <th>Course ID</th>
+                        {/*<th>Course ID</th>*/}
                         <th>Course Name</th>
                         <th>Course Code</th>
                         <th colSpan="2">Action</th>
