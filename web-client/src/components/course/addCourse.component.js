@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 const Instructor = props => (
-
+    <div className="row">
+    <div className="col-md-6">
     <div className='form-group'>
         <label>{props.fname} {props.lname}
             <input type='checkbox' name={props.id} className='form-check' onChange={props.onChange}/>
         </label>
-    </div>
+    </div></div></div>
 );
 
 export default class addCourse extends Component {
@@ -125,18 +126,20 @@ export default class addCourse extends Component {
 
     render() {
         return (
-            <div>
-                <form className="container" onSubmit={this.onSubmit}>
-
+            <div className="container">
+            <br/>
+            <h1 className="h3 mb-1 font-weight-normal offset-md-2">Add Course</h1><br/>
+            <div className="text-center offset-md-3 col-md-6">
+                <form  onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <div className="col-md-6">
+                        <div className="col-md-8">
                             <label>Course Name</label>
                             <input type="text" className="form-control"
                                    value={this.course_name}
                                    onChange={this.onChangeCourseName}/>
 
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-8">
                             <label>Course Code</label>
                             <input type="text" className="form-control"
                                    value={this.course_code}
@@ -162,7 +165,7 @@ export default class addCourse extends Component {
                 </form>
 
             </div>
-
+        </div>
         )
     }
 }

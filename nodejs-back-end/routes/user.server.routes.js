@@ -44,6 +44,38 @@ Router.get("/instructors", (req, res, next) => {
 
 });
 
+
+//get all admins
+Router.get("/admins", (req, res, next) => {
+
+    User.find().exec().then(docs => {
+
+        //res.json(docs);
+
+        const admins = [];
+
+        docs.forEach(user => {
+
+            if (user.role == 'Admin') {
+                admins.push(user);
+            }
+
+        });
+
+        res.status(200).json({
+            admins: admins
+        })
+
+    }).catch(err => {
+
+        res.status(500).json({
+            error: err
+        });
+
+    });
+
+});
+
 //get a specific user 
 Router.route('/:id').get(function(req,res){
     let id = req.params.id;

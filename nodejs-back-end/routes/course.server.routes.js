@@ -86,4 +86,15 @@ courseRoutes.get("/instructor/new/:instructorid", (req, res, next) => {
     });
 });
 
+//get all course
+courseRoutes.route('/all').get(function(req,res){
+    Course.find(function(err,courses){
+        if(err){
+            console.log(err);
+        }else{
+            res.json(courses);
+        }
+    });
+});
+
 module.exports = courseRoutes;

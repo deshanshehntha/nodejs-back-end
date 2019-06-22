@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css' 
+import 'bootstrap/dist/css/bootstrap.min.css'
+ 
 export default class Menu extends Component {
 
     render() {
@@ -15,10 +16,10 @@ export default class Menu extends Component {
                         <div className="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
                         <ul className="navbar-nav">
                             <li className="nav-item active">
-                            <a className="nav-link py-0" href="#">Settings<span className="sr-only">(current)</span></a>
+                            <Link className="nav-link py-0" to="/settings">Settings<span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item">
-                            <a className="nav-link py-0" href="#">Courses</a>
+                            <Link className="nav-link py-0" to="/courses">Courses</Link>
                             </li>
                             <li className="nav-item">
                             <Link className="nav-link py-0 " to ="/instructores">Instructors</Link>
