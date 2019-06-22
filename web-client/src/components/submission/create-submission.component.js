@@ -137,10 +137,9 @@ export default class StudentSubmissionComponent extends Component {
 
                         <tr>
                             <td> Time remaining </td>
+                            <td>  {this.state.remaining} </td>
                         </tr>
-                        <tr>
-                            {this.state.remaining}
-                        </tr>
+
                         <tr>
                             <td> Submit File </td>
 

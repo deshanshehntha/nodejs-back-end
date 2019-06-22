@@ -10,9 +10,6 @@ const Assignment = props => (
         <td>
             <Link className="btn btn-primary" to={"/editinsassignments/"+props.assignment._id}>Modify</Link>
         </td>
-        <td>
-            <Link className="btn btn-primary" to={"/deleteassignments/"+props.assignment._id}>Delete</Link>
-        </td>
     </tr>
 );
 
@@ -36,6 +33,8 @@ class Show_Assignments_Component extends React.Component {
     }
     constructor(props){
         super(props);
+
+
         this.state = {
             Assignments : []
         };
@@ -46,6 +45,8 @@ class Show_Assignments_Component extends React.Component {
             return <Assignment assignment={currentAssignment} key={i} />;
         })
     }
+
+
 
     render(){
         return(
