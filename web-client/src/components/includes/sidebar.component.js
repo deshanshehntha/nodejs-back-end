@@ -5,25 +5,6 @@ import logo from '../images/sliit_logo.png'
 
 export default class Header extends Component {
    
-    constructor(props){
-        super(props);
-        this.logOut = this.logOut.bind(this);      
-    }
-
-    logOut(){
-        sessionStorage.removeItem('isloged');
-        sessionStorage.removeItem('id');
-        sessionStorage.removeItem('regNo');
-        sessionStorage.removeItem('fname');
-        sessionStorage.removeItem('lname');
-        sessionStorage.removeItem('role');
-        sessionStorage.removeItem('email');
-        sessionStorage.removeItem('password');
-
-        this.props.history.push('/');
-
-    }
-
     render() {
         if(sessionStorage.getItem('isloged')){
             return(
@@ -54,7 +35,7 @@ export default class Header extends Component {
                                     </div>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <button type="button" class="btn btn-sm btn-primary" onClick={this.logOut}>Log Out</button>
+                                    <Link class="btn btn-sm btn-primary" to="/logout">Log Out</Link>
                                 </li>
                             </ul>
                             

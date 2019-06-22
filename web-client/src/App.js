@@ -19,12 +19,14 @@ import Show_Assignments_Component from './components/assignments/showassignments
 import Edit_Assignment_Component from './components/assignments/editassignment.component';
 import Settings from './components/admin/settings.component';
 import Students from './components/admin/students.component';
+import Logout from './components/logout.component';
 
 function App() {
   return (
     <Router>
         <Route path="/login" component={Login} />
         <Route path="/register" component={StudentRegister}/>  
+        <Route path="/logout" component={Logout}/>
             <Header/>
             <Menu/>
         <Route exact path="/" component={Welcome}/>
@@ -39,6 +41,7 @@ function App() {
         <Route path="/settings" component={Settings} />
         <Route path="/courses" component={AllCourses} />
         <Route path="/students" component={Students} />
+
       </Router>
   );
 }

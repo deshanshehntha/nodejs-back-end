@@ -1,5 +1,8 @@
 const express = require('express');
 const Router = express.Router();
+//import nodemailer email service
+const nodemailer = require('nodemailer');
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 let User = require('../models/user.model');
 
@@ -120,6 +123,9 @@ Router.route('/add').post(function(req,res){
     let user = new User(req.body);
     user.save()
         .then(user=>{
+            if(user.role==='Instructor'){
+                emailnotification(user.email)
+            }
             res.status(200).json({'message':'user added successfully',
                                    'user':user
                                 });
@@ -153,4 +159,34 @@ Router.route('/update/:id').post(function(req,res){
     });
 });
 
+
+function emailnotification(email){
+
+    var output=`<b>Your Account Activated </b>
+                <p>Dear Sir/Madam, We set up your course web account to stay connected with your
+                students.SLIIT Hope that you will do a good job </p>`; 
+
+
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'tutionguru2@gmail.com',
+            pass: 'Guru1234'
+        }
+    });
+    let mailOptions = {
+        from: 'tutionguru2@gmail.com <SLIIT>',
+        to:email,
+        subject: 'Instructor Account',
+        html: output
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+    });
+}
 module.exports = Router;

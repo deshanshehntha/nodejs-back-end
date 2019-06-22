@@ -3,7 +3,6 @@ import swal from 'sweetalert';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-
 export default class AddInstructors extends Component {
 
     constructor(props){
