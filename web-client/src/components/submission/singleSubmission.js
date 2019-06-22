@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 
-export default class StudentSubmissionComponent extends Component {
+export default class SingleSubmission extends Component {
     constructor(props) {
         super(props);
 
@@ -19,35 +19,52 @@ export default class StudentSubmissionComponent extends Component {
             file : '',
             comment : '',
             mark : '',
-            remaining : ''
+            remaining : '',
+            fileName : '',
+            assignmentId : ''
         }
     }
 
     componentDidMount() {
 
-            axios.get('http://localhost:4030/api/assignments/find/'+this.props.match.params.id )
-                .then(res=>{
-                    this.setState({
-                        subject : res.data.subject,
-                        assignmentName : res.data.assignmentName,
-                        startDate : res.data.startDate,
-                        dueDate : res.data.dueDate
-                    })
+        axios.get('http://localhost:4030/api/submission/single/'+this.props.match.params.id )
+            .then(res=>{
 
-                    const data = new FormData();
+                this.setState({
+                    comment : res.data.comment,
+                    fileName : res.data.fileName,
+                    assignmentId : res.data.assignmentId
+                })
 
-                    data.append("deadLineDate",res.data.dueDate );
+                axios.get('http://localhost:4030/api/assignments/find/'+res.data.assignment )
+                    .then(newRes=>{
+                        this.setState({
+                            subject : newRes.data.subject,
+                            assignmentName : newRes.data.assignmentName,
+                            startDate : newRes.data.startDate,
+                            dueDate : newRes.data.dueDate
 
-                    axios.post('http://localhost:8080/courseweb/api/assignment/time',data )
-                        .then(response=>{
-                            this.setState({
-                                remaining : response.data
-                            })
                         })
-                })
-                .catch(err=>{
-                    console.log(err);
-                })
+                        const data = new FormData();
+
+                        data.append("deadLineDate",newRes.data.dueDate );
+
+                        axios.post('http://localhost:8080/courseweb/api/assignment/time',data )
+                            .then(response=>{
+                                this.setState({
+                                    remaining : response.data
+                                })
+
+
+                            })
+
+
+                    });
+
+            })
+            .catch(err=>{
+                console.log(err);
+            })
     }
 
     onChangeFile(e){
@@ -73,12 +90,10 @@ export default class StudentSubmissionComponent extends Component {
         data.append("assignment", this.props.match.params.id);
         data.append("userId", sessionStorage.getItem("id"))
 
-        axios.post("http://localhost:8080/courseweb/api/assignment/submit" , data )
+        axios.put("http://localhost:8080/courseweb/api/assignment/submit" , data )
             .then(res=>{
                 console.log(res.data);
-
-                this.props.history.push('/showSubmission/'+res.data._id);
-
+                this.props.history.push('/showSubmission/'+this.state.assignmentId);
             })
             .catch(err=>{
                 console.log(err);
@@ -94,7 +109,7 @@ export default class StudentSubmissionComponent extends Component {
             <div className="container" style={{backgroundColor: "#FFF"}}>
                 <br/><br/><br/>
                 <form onSubmit={this.onFormSubmit}>
-                    <h2>Submit Assignment</h2>
+                    <h2>Edit Assignment</h2>
                     <br/><br/>
                     <table className="table">
                         <thead>
@@ -146,9 +161,10 @@ export default class StudentSubmissionComponent extends Component {
 
                             <td>
                                 <input type = "file"
-                                    onChange={this.onChangeFile}
-                                       required
+                                       onChange={this.onChangeFile}
+                                        required
                                 />
+                                <label htmlFor="files" className="btn">Old File : {this.state.fileName} </label>
                             </td>
                         </tr>
 
@@ -167,7 +183,7 @@ export default class StudentSubmissionComponent extends Component {
                     </table>
                     <div className="form-group">
                         <input type="submit"
-                               value="Submit Assignment"
+                               value="Edit Submission"
                                className="btn btn-primary"/>
                     </div>
                 </form>

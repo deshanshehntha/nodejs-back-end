@@ -66,22 +66,22 @@ router.route('/update/:id').post(function (req, res) {
         }
     });
 });
-//
-// /*
-// Delete a submission
-//  */
-// router.delete("/delete/:submissionId",function (req,res) {
-//
-//     const id = req.params.submissionId;
-//
-//     Submission.findByIdAndRemove({_id: id})
-//         .exec()
-//         .then(result=>{
-//             res.status(200).json(result);
-//         })
-//         .catch(err=>{
-//             res.status(500).json(err);
-//         })
-// });
+
+/*
+Delete a submission
+ */
+router.delete("/delete/:id",function (req,res) {
+
+    const id = req.params.id;
+
+    assignments.findByIdAndRemove({_id: id})
+        .exec()
+        .then(result=>{
+            res.status(200).json(result);
+        })
+        .catch(err=>{
+            res.status(500).json(err);
+        })
+});
 
 module.exports = router;

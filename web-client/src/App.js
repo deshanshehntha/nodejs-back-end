@@ -26,6 +26,7 @@ import Logout from './components/logout.component';
 import UpdateProfile from './components/admin/updateProfile.component';
 import StudentAssignmentList from './components/submission/assignment-list.component';
 import CreateAssignmentSubmissionComponent from './components/submission/create-submission.component';
+import SingleSubmissionComponent from './components/submission/singleSubmission';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
         <Route path="/currentStudentCourses" component={StudentCurrentCourses}/>
         <Route path="/studentAssignmentList" component = {StudentAssignmentList} />
         <Route path="/createSubmission/:id" component = {CreateAssignmentSubmissionComponent} />
+        <Route path="/showSubmission/:id" component = {SingleSubmissionComponent} />
 
       </Router>
   );

@@ -36,7 +36,9 @@ public class SubmissionController {
 	@RequestMapping(value = CommonConstants.SUBMIT_ASSIGNMENT, method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<Object> submitAssignment(@RequestParam("file") MultipartFile file,
 			@RequestParam("comment") String comment,
-			@RequestParam("mark") double mark )
+			@RequestParam("mark") double mark,
+			@RequestParam("assignment") ObjectId assignment,
+			@RequestParam("userId") ObjectId userID)
 			throws IOException {
 		
 		Submission submission = new Submission();
@@ -49,6 +51,8 @@ public class SubmissionController {
 		submission.setComment(comment);
 		submission.setMark(mark);
 		submission.setAssignment(new ObjectId());
+		submission.setAssignment(assignment);
+		submission.setUserId(userID);
 
 		repo.save(submission);
 
@@ -89,7 +93,9 @@ public class SubmissionController {
 	@RequestMapping(value = CommonConstants.SUBMIT_ASSIGNMENT, method = RequestMethod.PUT, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<Object> updateMark(@RequestParam("file") MultipartFile file,
 			@RequestParam("comment") String comment,
-			@RequestParam("mark") double mark )
+			@RequestParam("mark") double mark,
+			@RequestParam("assignment") ObjectId assignment,
+			@RequestParam("userId") ObjectId userID )
 			throws IOException {
 		
 		Submission submission = new Submission();
@@ -101,7 +107,8 @@ public class SubmissionController {
 		submission.setSubmitTime(Generator.getCurrentTime());
 		submission.setComment(comment);
 		submission.setMark(mark);
-		submission.setAssignment(new ObjectId());
+		submission.setAssignment(assignment);
+		submission.setUserId(userID);
 
 		repo.save(submission);
 
@@ -117,18 +124,24 @@ public class SubmissionController {
 		return "success";
 	};
 	
-	@RequestMapping(value = CommonConstants.SUBMIT_ASSIGNMENT, method = RequestMethod.GET)
-	public ResponseEntity<Object> calculateTime(@RequestParam("deadLineDate") String deadLineDate,
-			@RequestParam("deadLineTime") String deadLineTime)
+	@RequestMapping(value = CommonConstants.GET_TIME, method = RequestMethod.POST)
+	public ResponseEntity<Object> calculateTime(@RequestParam("deadLineDate") String deadLineDate
+			)
 			throws IOException {
 		
 		String message = "";
 		
 		String dateStart = Generator.getCurrentDate() + " " + Generator.getCurrentTime();
-		String dateStop =  deadLineDate + " " + deadLineTime;
+		
+		String newDate = deadLineDate.replace("-", "/");
+		
+		String dateFront = newDate.substring(0, 10);
+		String dateBack = newDate.substring(11,16);
+		
+		String dateStop =  dateFront + " " + dateBack;
 
 		
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
 		Date d1 = null;
 		Date d2 = null;
@@ -140,12 +153,12 @@ public class SubmissionController {
 			//in milliseconds
 			long diff = d2.getTime() - d1.getTime();
 
-			long diffSeconds = diff / 1000 % 60;
+		
 			long diffMinutes = diff / (60 * 1000) % 60;
 			long diffHours = diff / (60 * 60 * 1000) % 24;
 			long diffDays = diff / (24 * 60 * 60 * 1000);
 
-			message = diffDays + " days, " + diffHours + " hours, "+ diffMinutes + " minutes, " + diffSeconds + " secconds remaning for submission ";
+			message = diffDays + " days, " + diffHours + " hours, "+ diffMinutes + " minutes remaning for submission ";
 
 
 		} catch (Exception e) {

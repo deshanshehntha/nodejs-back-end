@@ -11,12 +11,18 @@ const Assignment = props => (
             <Link className="btn btn-primary" to={"/editinsassignments/"+props.assignment._id}>Modify</Link>
         </td>
         <td>
-            <Link className="btn btn-danger" to={"/assignmentDelete/"+props.assignment._id}>Delete</Link>
+            <Link className="btn btn-primary" to={"/deleteassignments/"+props.assignment._id}>Delete</Link>
         </td>
     </tr>
 );
 
 class Show_Assignments_Component extends React.Component {
+
+    delete() {
+        axios.delete('http://localhost:8081/courseweb/api/newassignment/delete')
+            .then(console.log('Deleted'))
+            .catch(err => console.log(err))
+    }
 
     componentDidMount() {
         document.title = "Assignments (My) | SLIIT";
