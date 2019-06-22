@@ -137,6 +137,9 @@ courseRoutes.post("/instructor/accept/:courseid/:instructorid", (req, res, next)
             }).catch(err => {
                 res.status(400).send("Update not possible");
             });
+        }
+    })
+});
 
 courseRoutes.route('/all').get(function(req,res){
     Course.find(function(err,courses){
