@@ -7,6 +7,10 @@ export default class StudentSubmissionComponent extends Component {
     constructor(props) {
         super(props);
 
+        this.onChangeComment = this.onChangeComment.bind(this);
+        this.onChangeFile = this.onChangeFile.bind(this);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+
         this.state = {
             subject : '',
             assignmentName : '',
@@ -44,6 +48,38 @@ export default class StudentSubmissionComponent extends Component {
                 .catch(err=>{
                     console.log(err);
                 })
+    }
+
+    onChangeFile(e){
+        this.setState({
+            file : e.target.files[0]
+        })
+    }
+
+    onChangeComment(e){
+        this.setState({
+            comment : e.target.value
+        })
+    }
+
+    onFormSubmit(e){
+        e.preventDefault();
+
+        const data = new FormData();
+
+        data.append("file", this.state.file );
+        data.append("comment", this.state.comment );
+        data.append("mark", 0 );
+        data.append("assignment", this.props.match.params.id);
+
+        axios.post("http://localhost:8080/courseweb/api/assignment/submit" , data )
+            .then(res=>{
+                console.log(res.data);
+
+            })
+            .catch(err=>{
+                console.log(err);
+            })
     }
 
     componentDidUpdate() {
@@ -106,7 +142,9 @@ export default class StudentSubmissionComponent extends Component {
                             <td> Submit File </td>
 
                             <td>
-                                <input type = "file" />
+                                <input type = "file"
+                                    onChange={this.onChangeFile}
+                                />
                             </td>
                         </tr>
 
@@ -115,6 +153,8 @@ export default class StudentSubmissionComponent extends Component {
 
                             <td>
                                 <input type = "text"
+                                       onChange={this.onChangeComment}
+                                       value = {this.state.comment}
                                        required/>
                             </td>
                         </tr>
