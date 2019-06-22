@@ -13,7 +13,7 @@ Router.route('/').get(function(req,res){
         }
     });
 });
-
+//get all instructores
 Router.get("/instructors", (req, res, next) => {
 
     User.find().exec().then(docs => {

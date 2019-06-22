@@ -10,7 +10,7 @@ import Welcome from './components/welcome.component';
 import AddCourse from './components/course/addCourse.component';
 import CourseList from './components/course/courseList.component'
 import StudentRegister from './components/studentRegister.component';
-
+import Instructors from './components/admin/instructors.component';
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
         <Route exact path="/" component={Welcome}/>
         <Route path="/addCourse" component={AddCourse}/>
         <Route path="/courseList" component={CourseList}/>
+        <Route path="/instructores" component={Instructors}/>
       </Router>
   );
 }
