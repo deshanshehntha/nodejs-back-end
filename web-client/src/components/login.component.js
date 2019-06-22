@@ -38,7 +38,7 @@ export default class Login extends Component {
             password:this.state.password
         }
 
-        axios.post('http://localhost:8080/api/user/validate/', user)
+        axios.post('http://localhost:8081/api/user/validate/', user)
             .then(result => {
 
                 let validUser=result.data;
