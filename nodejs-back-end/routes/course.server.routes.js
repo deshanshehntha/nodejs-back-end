@@ -57,4 +57,33 @@ courseRoutes.route('/edit/:id').post(function (req, res) {
     });
 });
 
+//instructer filter by course List
+
+courseRoutes.get("/instructor/new/:instructorid", (req, res, next) => {
+
+    Course.find().exec().then(docs => {
+
+        const courses = [];
+
+        docs.forEach(course => {
+            course.instructors.forEach(ins => {
+                if (ins.instructor == req.params.instructorid) {
+                    if (ins.status == 'not-accepted') {
+                        courses.push(course);
+                    }
+                }
+            });
+        });
+
+        res.status(200).json({
+            courses: courses
+        })
+
+    }).catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    });
+});
+
 module.exports = courseRoutes;
