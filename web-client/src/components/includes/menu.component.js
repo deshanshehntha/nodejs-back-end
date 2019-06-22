@@ -22,7 +22,11 @@ export default class Menu extends Component {
                             <Link className="nav-link py-0" to="/courses">Courses</Link>
                             </li>
                             <li className="nav-item">
+
+                            <a className="nav-link py-0 " href="addCourse">Courses</a>
+
                             <Link className="nav-link py-0 " to ="/instructores">Instructors</Link>
+
                             </li>
                             <li className="nav-item">
                             <Link className="nav-link py-0 " to="/students">Students</Link>
@@ -34,7 +38,9 @@ export default class Menu extends Component {
             }
             
         }
+
         if(sessionStorage.getItem('role')==='Student'){
+
             return(
                 <nav className="navbar navbar-expand-lg navbar-dark" style={{background:'#283593'}}>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +74,9 @@ export default class Menu extends Component {
                     </nav>
             );
         }
+
         if(sessionStorage.getItem('role')==='Instructor'){
+
             return(
                 <nav className="navbar navbar-expand-lg navbar-dark" style={{background:'#283593'}}>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +89,15 @@ export default class Menu extends Component {
                         <a className="nav-link py-0" href="#">Profile<span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
+
+                        <a className="nav-link py-0" href="courseList">New Courses</a>
+                        </li>
+
+                        <li className="nav-item">
+                            <a className="nav-link py-0" href="currentCourseList">Current Courses</a>
+
                             <Link to="/addassignment">Add Assignment</Link>
+
                         </li>
                         <li className="nav-item">
                             <Link to="/showinsassignments/">Modify Assignment</Link>
