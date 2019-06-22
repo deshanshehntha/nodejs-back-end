@@ -54,7 +54,7 @@ export default class Header extends Component {
                                     </div>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <button type="button" class="btn btn-sm btn-primary" onClick={this.logOut}>Log Out</button>
+                                    <button type="button" className="btn btn-sm btn-primary" onClick={this.logOut}>Log Out</button>
                                 </li>
                             </ul>
                             
