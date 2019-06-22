@@ -37,7 +37,7 @@ function App() {
         <Route path="/admin_add" component={AddAdmin}/>
         <Route path="/addassignment" component={Add_Assignment_Component} />
         <Route path="/showinsassignments/" component={Show_Assignments_Component} />
-        <Route path="/editinsassignments/" component={Edit_Assignment_Component} />
+        <Route path="/editinsassignments/:id" component={Edit_Assignment_Component} />
         <Route path="/settings" component={Settings} />
         <Route path="/courses" component={AllCourses} />
         <Route path="/students" component={Students} />
