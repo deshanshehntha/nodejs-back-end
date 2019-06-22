@@ -22,11 +22,7 @@ export default class Menu extends Component {
                             <Link className="nav-link py-0" to="/courses">Courses</Link>
                             </li>
                             <li className="nav-item">
-
-                            <a className="nav-link py-0 " href="addCourse">Courses</a>
-
                             <Link className="nav-link py-0 " to ="/instructores">Instructors</Link>
-
                             </li>
                             <li className="nav-item">
                             <Link className="nav-link py-0 " to="/students">Students</Link>
@@ -49,26 +45,19 @@ export default class Menu extends Component {
     
                         <div className="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
                         <ul className="navbar-nav">
-                            <li className="nav-item active">
-                            <a className="nav-link py-0" href="#">Profile<span className="sr-only">(current)</span></a>
-                            </li>
                             <li className="nav-item">
-                            <a className="nav-link py-0" href="#">Courses</a>
+                            <a className="nav-link py-0" href="newStudentCourses">New Courses</a>
                             </li>
+
                             <li className="nav-item">
-                            <a className="nav-link py-0 disabled" href="#">Assigmentes</a>
+                                <a className="nav-link py-0" href="currentStudentCourses">Current Courses</a>
                             </li>
+
                             <li className="nav-item">
-                            <a className="nav-link py-0 disabled" href="#">Exams</a>
+                                <a className="nav-link py-0" href="studentAssignmentList">Current Courses</a>
                             </li>
-                            <li className="nav-item dropdown">
-                            <a className="nav-link py-0 dropdown-toggle" href="" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Courses</a>
-                            <div className="dropdown-menu" aria-labelledby="dropdown08">
-                                <a className="dropdown-item" href="#">Action</a>
-                                <a className="dropdown-item" href="#">Another action</a>
-                                <a className="dropdown-item" href="#">Something else here</a>
-                            </div>
-                            </li>
+
+
                         </ul>
                         </div>
                     </nav>

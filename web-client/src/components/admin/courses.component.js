@@ -37,7 +37,7 @@ export default class AllCourses extends Component {
 
     axios.get('http://localhost:4030/api/courses/all')
         .then(response =>{
-            this.setState({courses:response.data})
+            this.setState({courses:response.data});
             console.log(response);
         })
         .catch(function(error){
