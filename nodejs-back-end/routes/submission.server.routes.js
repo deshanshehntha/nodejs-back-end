@@ -24,11 +24,10 @@ router.get("/all", function (req,res) {
 /*
 Get the submission by submission id
  */
-router.get("/submission/:submissionId",function (req,res) {
+router.get("/single/:submissionId",function (req,res) {
    const id = req.params.submissionId;
 
-   Submission.find({_id : id })
-       .populate("assignment")
+   Submission.findById({_id : id })
        .exec()
        .then(submission=>{
            if( submission ){
