@@ -1,4 +1,5 @@
 /nodejs-back-end/node_modules
+/nodejs-back-end/.idea
 /web-client/node_modules
 /web-client/.idea
 /.idea

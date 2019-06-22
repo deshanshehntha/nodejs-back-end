@@ -13,7 +13,7 @@ Router.route('/').get(function(req,res){
         }
     });
 });
-
+//get all instructores
 Router.get("/instructors", (req, res, next) => {
 
     User.find().exec().then(docs => {
@@ -32,6 +32,68 @@ Router.get("/instructors", (req, res, next) => {
 
         res.status(200).json({
             instructors: instructors
+        })
+
+    }).catch(err => {
+
+        res.status(500).json({
+            error: err
+        });
+
+    });
+
+});
+
+
+//get all admins
+Router.get("/admins", (req, res, next) => {
+
+    User.find().exec().then(docs => {
+
+        //res.json(docs);
+
+        const admins = [];
+
+        docs.forEach(user => {
+
+            if (user.role == 'Admin') {
+                admins.push(user);
+            }
+
+        });
+
+        res.status(200).json({
+            admins: admins
+        })
+
+    }).catch(err => {
+
+        res.status(500).json({
+            error: err
+        });
+
+    });
+
+});
+//get all students
+Router.get("/students", (req, res, next) => {
+
+    User.find().exec().then(docs => {
+
+        //res.json(docs);
+
+        const students = [];
+
+        docs.forEach(user => {
+
+            if (user.role == 'Student') {
+                students.push(user);
+            }
+
+        });
+
+        res.status(200).json({
+            students: students
         })
 
     }).catch(err => {

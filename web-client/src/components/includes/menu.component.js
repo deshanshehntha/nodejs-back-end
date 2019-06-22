@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css' 
+import 'bootstrap/dist/css/bootstrap.min.css'
+ 
 export default class Menu extends Component {
 
     render() {
@@ -15,16 +16,20 @@ export default class Menu extends Component {
                         <div className="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
                         <ul className="navbar-nav">
                             <li className="nav-item active">
-                            <a className="nav-link py-0" href="#">Settings<span className="sr-only">(current)</span></a>
+                            <Link className="nav-link py-0" to="/settings">Settings<span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item">
-                            <a className="nav-link py-0" href="#">Instructors</a>
+                            <Link className="nav-link py-0" to="/courses">Courses</Link>
                             </li>
                             <li className="nav-item">
+
                             <a className="nav-link py-0 " href="addCourse">Courses</a>
+
+                            <Link className="nav-link py-0 " to ="/instructores">Instructors</Link>
+
                             </li>
                             <li className="nav-item">
-                            <a className="nav-link py-0 " href="#">Students</a>
+                            <Link className="nav-link py-0 " to="/students">Students</Link>
                             </li>
                         </ul>
                         </div>
@@ -33,7 +38,9 @@ export default class Menu extends Component {
             }
             
         }
-         if(sessionStorage.getItem('role')==='Student'){
+
+        if(sessionStorage.getItem('role')==='Student'){
+
             return(
                 <nav className="navbar navbar-expand-lg navbar-dark" style={{background:'#283593'}}>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +74,9 @@ export default class Menu extends Component {
                     </nav>
             );
         }
-         if(sessionStorage.getItem('role')==='Instructor'){
+
+        if(sessionStorage.getItem('role')==='Instructor'){
+
             return(
                 <nav className="navbar navbar-expand-lg navbar-dark" style={{background:'#283593'}}>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,14 +89,18 @@ export default class Menu extends Component {
                         <a className="nav-link py-0" href="#">Profile<span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
+
                         <a className="nav-link py-0" href="courseList">New Courses</a>
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link py-0" href="courseList">Current Courses</a>
+                            <a className="nav-link py-0" href="currentCourseList">Current Courses</a>
+
+                            <Link to="/addassignment">Add Assignment</Link>
+
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link py-0 disabled" href="#">Students</a>
+                            <Link to="/showinsassignments/">Modify Assignment</Link>
                         </li>
                         <li className="nav-item dropdown">
                         <a className="nav-link py-0 dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Courses</a>
